@@ -6,8 +6,8 @@ $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 echo "\n\n\n\ db follows ";
-echo $db;
-echo $password;
+echo $server;
+echo $username;
 
 $conn = new mysqli($server, $username, $password, $db);
 ?>
@@ -93,6 +93,18 @@ $conn = new mysqli($server, $username, $password, $db);
     </form>
 
 <?php
+
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+echo "\n\n\n\ db follows ";
+echo $db;
+
+$conn = new mysqli($server, $username, $password, $db);
+
     function display($row, $mode){
         $INIT = 0;
         $NO_MATCH = 1;
