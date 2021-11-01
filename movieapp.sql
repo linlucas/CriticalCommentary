@@ -220,7 +220,6 @@ INSERT INTO `starring` (`movie_id`, `actor_id`) VALUES
 --
 DROP TABLE IF EXISTS `avg_rating`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `avg_rating`  AS SELECT `ratings`.`movie_id` AS `movie_id`, avg(`ratings`.`rating`) AS `avg` FROM `ratings` GROUP BY `ratings`.`movie_id` ;
 
 --
 -- Indexes for dumped tables
@@ -311,3 +310,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `avg_rating`  AS SELECT `ratings`.`movie_id` AS `movie_id`, avg(`ratings`.`rating`) AS `avg` FROM `ratings` GROUP BY `ratings`.`movie_id` ;
