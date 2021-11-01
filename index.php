@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/cs/font-awesome.min.css" rel="stylesheet">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'><title>The Critics</title>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'><title>CriticalCommentary</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
@@ -98,15 +98,15 @@ echo "\n\nConnected successfully";
 
 $sql = "select * from movies";
 $result = $conn->query($sql);
-
+/*
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo '\n\nid: " . $row["name"].';
+    $row
   }
 } else {
   echo "0 results";
-}
+}*/
 
     function display($row, $mode){
         $INIT = 0;
@@ -342,8 +342,7 @@ if ($result->num_rows > 0) {
         for ($x = 0; $x <= 3; $x++) {
             echo "<br>";
         }
-        //$query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
-        $query = "SELECT * FROM movies";
+        $query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
         $res = $conn->query($query);
         $row = mysqli_fetch_array($res);
         display($row, 0);
