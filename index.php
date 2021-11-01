@@ -94,7 +94,7 @@ $conn = new mysqli($server, $username, $password, $db);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+echo "\n\nConnected successfully";
 
     function display($row, $mode){
         $INIT = 0;
@@ -334,10 +334,21 @@ echo "Connected successfully";
         }
         //$query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
         $query = "SELECT * FROM movies";
-        //$res = mysqli_query($conn, $query);
-        $res = conn->query($query);
-        $row = mysqli_fetch_array($res);
-        display($row, 0);
+        $results = conn->query($query);
+
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo $row;
+    echo "\n\n";
+  }
+} else {
+  echo "0 results";
+}
+
+        //$row = mysqli_fetch_array($res);
+        //display($row, 0);
     }
     conn->close();
 ?>
