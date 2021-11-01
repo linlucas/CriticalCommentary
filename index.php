@@ -1,21 +1,3 @@
-<?php
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-$server = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$db = substr($url["path"], 1);
-echo "\n\n\n\ db follows ";
-echo $server;
-echo $username;
-
-$conn = new mysqli($server, $username, $password, $db);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,6 +90,11 @@ echo "\n\n\n\ db follows ";
 echo $db;
 
 $conn = new mysqli($server, $username, $password, $db);
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
 
     function display($row, $mode){
         $INIT = 0;
@@ -345,12 +332,14 @@ $conn = new mysqli($server, $username, $password, $db);
         for ($x = 0; $x <= 3; $x++) {
             echo "<br>";
         }
-        $query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
+        //$query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
+        $query = "SELECT * FROM movies";
         //$res = mysqli_query($conn, $query);
-        //$res = conn->query($query);
-        //$row = mysqli_fetch_array($res);
-        //display($row, 0);
+        $res = conn->query($query);
+        $row = mysqli_fetch_array($res);
+        display($row, 0);
     }
+    conn->close();
 ?>
 
 </body>
