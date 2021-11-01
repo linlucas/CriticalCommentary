@@ -339,10 +339,11 @@ if ($result->num_rows > 0) {
         for ($x = 0; $x <= 3; $x++) {
             echo "<br>";
         }
-        $query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
+        //$query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
+        $query = 'select * from movies limit 1';
         $res = $conn->query($query);
         $row = mysqli_fetch_array($res);
-        display($row, 0);
+        display($row, 1);
     }
     $conn->close();
 ?>
