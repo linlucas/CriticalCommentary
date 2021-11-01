@@ -326,6 +326,7 @@ $conn = new mysqli($server, $username, $password, $db);
         for ($x = 0; $x <= 3; $x++) {
             echo "<br>";
         }
+        echo $mysqli->host_info . "\n";
         $query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
         //$res = mysqli_query($conn, $query);
         $res = conn->query($query);
