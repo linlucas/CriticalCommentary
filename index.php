@@ -96,6 +96,18 @@ if ($conn->connect_error) {
 }
 echo "\n\nConnected successfully";
 
+$sql = "select * from movies";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo '\n\nid: " . $row["name"].';
+  }
+} else {
+  echo "0 results";
+}
+
     function display($row, $mode){
         $INIT = 0;
         $NO_MATCH = 1;
@@ -330,7 +342,8 @@ echo "\n\nConnected successfully";
         for ($x = 0; $x <= 3; $x++) {
             echo "<br>";
         }
-        $query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
+        //$query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
+        $query = "SELECT * FROM movies";
         $res = $conn->query($query);
         $row = mysqli_fetch_array($res);
         display($row, 0);
