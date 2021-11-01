@@ -343,9 +343,9 @@ $conn = new mysqli($server, $username, $password, $db);
         }
         $query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
         //$res = mysqli_query($conn, $query);
-        $res = conn->query($query);
-        $row = mysqli_fetch_array($res);
-        display($row, 0);
+        //$res = conn->query($query);
+        //$row = mysqli_fetch_array($res);
+        //display($row, 0);
     }
 ?>
 
