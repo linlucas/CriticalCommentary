@@ -327,7 +327,7 @@ if ($result->num_rows > 0) {
         }
         else {
             while($row = mysqli_fetch_array($res)){
-                display($row, 2);
+                display($row, 1);
 
                 for ($x = 0; $x <= 3; $x++) {
                     echo "<br>";
@@ -340,7 +340,7 @@ if ($result->num_rows > 0) {
             echo "<br>";
         }
         //$query = 'select * from movies Natural Join box_office Natural Join parental_advisory NATURAL JOIN avg_rating order by rand() limit 1';
-        $query = 'select * from movies limit 1';
+        $query = 'SELECT * FROM movies t1 JOIN box_office t2 ON t1.movie_id = t2.movie_id JOIN parental_advisory t3 ON t2.movie_id = t3.movie_id LIMIT 1';
         $res = $conn->query($query);
         $row = mysqli_fetch_array($res);
         display($row, 1);
